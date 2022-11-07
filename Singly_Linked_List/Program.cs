@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -56,9 +57,51 @@ namespace Singly_Linked_List
                     Console.WriteLine();
                     return ;
                 }
-            }
                 previous.next = current;
                 previous.next = newnode;
+            }
+            previous.next = current;
+            previous.next = newnode;
+        }
+
+        public bool delNode(int rollNo)
+        {
+            Node previous, current;
+            previous = current = null;
+            if(Search(rollNo, ref previous, ref current) == false)
+                return false;
+            if(current == START)
+                    START = START.next;
+            return true;
+        }   
+        public bool Search(int rollNo, ref Node previous, ref Node current)
+        {
+            previous = START;
+            current = START;
+            while((current != null)&&(rollNo != current.rollNumber))
+            {
+                previous = current;
+                current = current.next;
+            }
+            if (current == null)
+                return false;
+            else
+                return true;
+        }
+        public void Traverse()
+        {
+            if (listEmpty())
+                Console.WriteLine("\nThe record in the list are : ");
+            else
+            {
+                Console.WriteLine();
+                Node currentNode;
+                for (currentNode = START; currentNode != null; 
+                    currentNode = currentNode.next)
+                    Console.Write(currentNode.rollNumber + " "
+                        + currentNode.name + "\n");
+                Console.WriteLine();
+            }
         }
         
     }
