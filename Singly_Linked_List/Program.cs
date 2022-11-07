@@ -16,7 +16,24 @@ namespace Singly_Linked_List
 
     class List
     {
+        Node START;
+        public List()
+        {
+            START = null;
+        }
+        public void addNote() // add a node in the list
+        {
+            int rollNo;
+            string nm;
+            Console.Write("\nEnter the roll number of student : ");
+            rollNo = Convert.ToInt32(Console.ReadLine());
+            Console.Write("\nEnter the roll name of student : ");
+            nm = Console.ReadLine();
+            Node newnode = new Node();
+            newnode.rollNumber = rollNo;
+            newnode.name = nm;
 
+        }
     }
     
     
